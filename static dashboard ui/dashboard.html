@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Chart.JS</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">s
+    <link rel="stylesheet" href="dash.css">
+</head>
+
+<body>
+    <nav class="nav">
+        <img src="ISA-Header-Logo(white).png" width='180px' height='120px'>
+
+        <ul class="menu">
+            <li><a href=""><i class="fa fa-area-chart"></i><span>Line</span></a></li>
+            <li><a href=""><i class="fa fa-bar-chart"></i><span> Bar</span></a></li>
+            <li><a href=""><i class="fa fa-pie-chart"></i><span> Doughnut</span></a></li>
+        </ul>
+    </nav>
+    <main class="content">
+        <div class="header">
+            <h1><span>Breakdown of Hours</span></h1>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <center>
+                    <div class="row linegraph">
+                        <h2><i class="fa fa-angle-double-right"></i>Line/Area Graph</h2>
+                        <canvas id="line"></canvas>
+                    </div>
+                </center>
+
+
+                <div class="row">
+                    <div class="card left col-xs-6">
+                        <h2><i class="fa fa-angle-double-right"></i>Bar Graph</h2>
+                        <canvas id="hours"></canvas>
+                    </div>
+                    <div class="card col-xs-6">
+                        <div class="right">
+                            <h2><i class="fa fa-angle-double-right"></i>Doughnut Graph</h2>
+                            <canvas id="hour"></canvas>
+                        </div>
+
+                        <div class="chart-legend">
+                            <ul>
+                                <li class="lectures">Lectures </li>
+                                <li class="assignments">Assignments</li>
+                                <li class="relaxing">Relaxing</li>
+                                <li class="coding">Coding</li>
+                                <li class="sleeping">Sleeping</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        var canvasChart = document.getElementById("hours").getContext("2d");
+        var canvasChart1 = document.getElementById("hour").getContext("2d");
+        var canvasChart3 = document.getElementById("line").getContext("2d");
+
+        // Chart.defaults.global.defaultFontFamily = 'Lato';
+        // Chart.defaults.global.defaultFontSize = 18;
+        // Chart.defaults.global.defaultFontColor = '#777';
+
+        let myChart = new Chart(canvasChart, {
+            type: 'bar',
+
+            data: {
+                labels: ['lectures', 'assignments', 'relaxing', 'coding', 'sleeping'],
+                datasets: [{
+                    label: 'hours',
+                    data: [
+                        6, 2, 4, 4, 8
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 102, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)'],
+                    borderWidth: 1,
+                    borderColor: '#777',
+                    hoverBorderWidth: 3,
+                    hoverBorderColor: '#000',
+                }]
+            },
+            options: {
+                // responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        fontSize: 25,
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        }
+                    },
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            color: 'violet'
+                        }
+                    },
+                    layout: {
+                        padding: {
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                    }
+                }
+            }
+        });
+
+        let myChart2 = new Chart(canvasChart1, {
+            type: 'doughnut',
+
+            data: {
+                labels: ['lectures', 'assignments', 'relaxing', 'coding', 'sleeping'],
+                datasets: [{
+                    label: 'hours',
+                    data: [
+                        6, 2, 4, 4, 8
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 102, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)'],
+                    borderWidth: 1,
+                    borderColor: '#777',
+                    hoverBorderWidth: 3,
+                    hoverBorderColor: '#000',
+                }]
+            },
+            options: {
+                // responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        fontSize: 25,
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        }
+                    },
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            color: 'violet'
+                        }
+                    },
+                    layout: {
+                        padding: {
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                    }
+                }
+            }
+        });
+
+
+
+        let myChart3 = new Chart(canvasChart3, {
+            type: 'line',
+
+            data: {
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                datasets: [{
+                    label: 'hours',
+                    data: [
+                        3, 4, 8, 8, 12, 9, 8
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 102, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)'],
+                    borderWidth: 1,
+                    borderColor: '#777',
+                    hoverBorderWidth: 3,
+                    hoverBorderColor: '#000',
+                    fill: true
+                }]
+            },
+            options: {
+                // responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        fontSize: 25,
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        }
+                    },
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            color: 'violet'
+                        }
+                    },
+                    layout: {
+                        padding: {
+                        }
+                    },
+                    tooltip: {
+                        enabled: true,
+                    }
+                }
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
