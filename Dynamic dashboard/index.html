@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>CHARTS</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="can">
+            <div class="container s12 ">
+                <a href="#" class="brand-logo">
+                    <img src="chart.png" style="width: 70px; margin-top: 50px;">
+                    <h1 id="title">Chart</h1>
+                </a>
+            </div>
+        </div>
+    </header>
+    <!-- chart -->
+    <div class="container can2">
+        <div class="chart">
+            <div class="row selectrow">
+                <div class="input-field col s12 l4 select inline">
+                    <!-- Dropdown menu -->
+                    <select id="myInput">
+                        <option value="" disabled selected>Choose Chart</option>
+                        <option value="line">Line</option>
+                        <option value="bar">Bar</option>
+                        <option value="pie">Pie</option>
+                        <option value="doughnut">Doughnut</option>
+                    </select>
+                </div>
+                <!-- Submit Button -->
+                <div class="col s12 l6 inline chartbtn">
+                    <a class="waves-effect waves-light btn" onclick="getInputValue();">Submit</a>
+                </div>
+            </div>
+            <!-- Chart Canvas-->
+            <div class="chart">
+                <canvas id="myChart" aria-label="chart" role="img"></canvas>
+            </div>
+            <!-- Data Label input feilds -->
+            <div class="addinput">
+                <input type="number" id="pushvalue" class="from-control" placeholder="Enter Data">
+                <input type="text" id="pushtext" placeholder="Enter Label">
+                <a class="waves-effect waves-light btn" id="push">Add</a>
+                <br>
+                <a class="waves-effect waves-light btn" id="pop">Remove Last Entry</a>
+            </div>
+        </div>
+        <input type="number" id="popvalue" class="from-control" style="display: none;">
+        <input type="text" id="poptext" style="display: none;">
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="chart.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+    </script>
+</body>
+
+</html>
